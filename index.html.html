@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quality DATD Parts</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF9E9;
+    --cream-dark: #f5eed8;
+    --green: #5A8100;
+    --green-light: #7aad00;
+    --green-dark: #436000;
+    --green-pale: #eef5d6;
+    --green-mid: #c5d98a;
+    --amber: #FFB400;
+    --amber-dark: #cc9000;
+    --amber-light: #ffd166;
+    --orange: #FF6C02;
+    --orange-dark: #cc5500;
+    --orange-light: #ff9a4d;
+    --red: #e53935;
+    --cyan: #00acc1;
+    --sidebar-w: 240px;
+    --radius: 12px;
+    --shadow: 0 4px 20px rgba(67,96,0,0.12);
+    --transition: 0.22s cubic-bezier(.4,0,.2,1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Sarabun', sans-serif; background: linear-gradient(160deg, #FFF9E9 0%, #fff4d6 40%, #fff0e0 70%, #ffe8cc 100%); background-attachment: fixed; color: #2d2d2d; min-height: 100vh; display: flex; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: var(--sidebar-w); min-height: 100vh; background: linear-gradient(180deg, #2e4200 0%, #436000 35%, #5A8100 75%, #6a9500 100%);
+    display: flex; flex-direction: column; position: fixed; left: 0; top: 0; z-index: 100;
+    box-shadow: 4px 0 24px rgba(67,96,0,0.30);
+  }
+  .sidebar-logo {
+    padding: 22px 20px 14px; border-bottom: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--amber), var(--orange)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; font-family: 'Barlow Condensed', sans-serif; box-shadow: 0 2px 8px rgba(255,108,2,0.45); }
+  .logo-text { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.3; }
+  .logo-sub { color: rgba(255,255,255,0.55); font-size: 10px; font-weight: 400; }
+
+  .sidebar-nav { flex: 1; padding: 16px 0; }
+  .nav-section-label { color: rgba(255,255,255,0.4); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; padding: 8px 20px 4px; text-transform: uppercase; }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px; padding: 11px 20px; cursor: pointer;
+    color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500;
+    border-left: 3px solid transparent; transition: all var(--transition);
+    border-radius: 0 8px 8px 0; margin: 1px 8px 1px 0;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .nav-item.active { background: linear-gradient(90deg, rgba(255,180,0,0.28), rgba(255,108,2,0.12)); color: var(--amber); border-left-color: var(--amber); font-weight: 600; }
+  .nav-item .nav-icon { font-size: 16px; width: 20px; text-align: center; }
+  .sidebar-footer { padding: 14px 20px; border-top: 1px solid rgba(255,255,255,0.10); color: rgba(255,255,255,0.35); font-size: 11px; }
+
+  /* MAIN */
+  .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
+  .topbar {
+    background: linear-gradient(90deg, #ffffff, #FFF9E9); padding: 0 28px; height: 58px; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 2px solid var(--cream-dark); position: sticky; top: 0; z-index: 90; box-shadow: 0 2px 8px rgba(67,96,0,0.07);
+  }
+  .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .breadcrumb span { color: #999; }
+  .breadcrumb a { color: var(--green); font-weight: 600; cursor: pointer; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .today-badge { background: linear-gradient(135deg, var(--cream), #fff3cc); border: 1px solid var(--amber); color: var(--green-dark); font-size: 11.5px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+
+  .content { padding: 28px; flex: 1; }
+
+  /* PAGE HEADER */
+  .page-header { margin-bottom: 22px; }
+  .page-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.5px; }
+  .page-subtitle { font-size: 13px; color: #888; margin-top: 2px; }
+
+  /* SUMMARY CARDS */
+  .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 26px; }
+  .summary-card {
+    border-radius: var(--radius); padding: 18px 20px; display: flex; flex-direction: column; align-items: center;
+    box-shadow: var(--shadow); transition: transform var(--transition);
+  }
+  .summary-card:hover { transform: translateY(-2px); }
+  .summary-card.finish { background: linear-gradient(135deg, #5A8100, #7aad00); }
+  .summary-card.onplan { background: linear-gradient(135deg, #FFB400, #ffd166); }
+  .summary-card.delay { background: linear-gradient(135deg, #FF6C02, #ff9a4d); }
+  .summary-card.total { background: linear-gradient(135deg, #436000, #5A8100); }
+  .summary-card .card-num { font-family: 'Barlow Condensed', sans-serif; font-size: 42px; font-weight: 800; color: #fff; line-height: 1; }
+  .summary-card .card-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 1.5px; margin-top: 4px; text-transform: uppercase; }
+
+  /* DATA TABLE / CARDS */
+  .section-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .section-title-sm { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.5px; text-transform: uppercase; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: none; transition: all var(--transition); font-family: 'Sarabun', sans-serif;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--green-dark), var(--green)); color: #fff; box-shadow: 0 2px 8px rgba(90,129,0,0.30); }
+  .btn-primary:hover { background: linear-gradient(135deg, var(--green), var(--green-light)); }
+  .btn-danger { background: #fff; color: var(--red); border: 1.5px solid var(--red); }
+  .btn-danger:hover { background: var(--red); color: #fff; }
+  .btn-sm { padding: 5px 11px; font-size: 12px; border-radius: 6px; }
+  .btn-amber { background: linear-gradient(135deg, var(--amber), var(--orange)); color: #fff; box-shadow: 0 2px 8px rgba(255,108,2,0.30); }
+  .btn-amber:hover { background: linear-gradient(135deg, var(--amber-dark), var(--orange-dark)); }
+
+  /* CUSTOMER GRID */
+  .customer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .customer-card {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+    overflow: hidden; cursor: pointer; transition: all var(--transition);
+    border: 2px solid transparent;
+  }
+  .customer-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(90,129,0,0.18); }
+  .customer-card-header { background: linear-gradient(135deg, #436000, #5A8100); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .customer-name { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+  .customer-card-body { padding: 14px 18px; }
+  .mini-stats { display: flex; gap: 8px; }
+  .mini-stat { flex: 1; text-align: center; padding: 8px 4px; border-radius: 6px; }
+  .mini-stat .ms-num { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: #fff; }
+  .mini-stat .ms-label { font-size: 9px; color: rgba(255,255,255,0.85); font-weight: 700; letter-spacing: 1px; }
+  .mini-stat.finish { background: var(--green); }
+  .mini-stat.onplan { background: var(--amber); }
+  .mini-stat.delay { background: var(--red); }
+  .mini-stat.total { background: var(--cyan); }
+  .card-actions { display: flex; gap: 6px; margin-top: 12px; }
+
+  /* MODEL GRID */
+  .model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .model-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; cursor: pointer; transition: all var(--transition); border: 2px solid transparent; }
+  .model-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .model-card-header { background: linear-gradient(135deg, #FFB400, #FF6C02); padding: 12px 16px; }
+  .model-name { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: #fff; }
+  .model-card-body { padding: 12px 16px; }
+
+  /* PARTS TABLE */
+  .table-wrap { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: linear-gradient(90deg, #436000, #5A8100); }
+  thead th { padding: 11px 14px; color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-align: left; }
+  tbody tr { border-bottom: 1px solid #f5eed8; transition: background var(--transition); }
+  tbody tr:hover { background: #FFF3CC; }
+  tbody td { padding: 11px 14px; font-size: 13.5px; }
+  .clickable-cell { color: var(--green); font-weight: 600; cursor: pointer; text-decoration: underline dotted; }
+  .clickable-cell:hover { color: var(--orange); }
+
+  /* MILESTONES */
+  .milestones-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 22px; }
+  .milestone-card { background: #fff; border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); border-top: 4px solid transparent; border-image: linear-gradient(90deg, #5A8100, #FFB400, #FF6C02) 1; }
+  .milestone-title { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+  .milestone-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; padding: 3px 0; }
+  .milestone-row .mlabel { color: #888; font-weight: 600; }
+  .milestone-row .mval { font-weight: 600; color: var(--green-dark); }
+  .milestone-row .mval.actual { color: var(--orange); }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+  .badge-green { background: #e6f0d0; color: var(--green-dark); }
+  .badge-amber { background: #fff3cc; color: #aa7700; }
+  .badge-red { background: #fde8e8; color: var(--red); }
+  .badge-gray { background: #f0f0f0; color: #888; }
+
+  /* TRIAL TABLE */
+  .trial-table-wrap { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .trial-table-header { background: linear-gradient(135deg, #FFB400, #FF6C02); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+  .trial-table-header h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+
+  /* MILESTONE EDITABLE */
+  .milestones-grid-part { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 22px; }
+  .milestone-edit-card {
+    background: #fff; border-radius: var(--radius); padding: 14px 12px; box-shadow: var(--shadow);
+    border-top: 4px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .milestone-edit-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #5A8100, #FFB400, #FF6C02);
+  }
+  .milestone-edit-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+    color: var(--green-dark); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px;
+    text-align: center;
+  }
+  .milestone-edit-row { margin-bottom: 8px; }
+  .milestone-edit-label {
+    font-size: 10px; font-weight: 700; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .milestone-edit-label.plan-label { color: var(--green-dark); }
+  .milestone-edit-label.actual-label { color: var(--orange); }
+  .milestone-inputs { display: flex; gap: 4px; }
+  .milestone-input-pct, .milestone-input-date {
+    border: 1.5px solid #e8d9a0; border-radius: 6px; padding: 5px 6px;
+    font-size: 11px; font-family: 'Sarabun', sans-serif; outline: none;
+    transition: border var(--transition); background: var(--green-pale);
+    width: 100%;
+  }
+  .milestone-input-pct { max-width: 52px; text-align: center; }
+  .milestone-input-date { flex: 1; }
+  .milestone-input-pct:focus, .milestone-input-date:focus { border-color: var(--green); background: #fff; }
+  .milestone-input-pct.actual-inp, .milestone-input-date.actual-inp {
+    background: #fff3cc;
+  }
+  .milestone-input-pct.actual-inp:focus, .milestone-input-date.actual-inp:focus { border-color: var(--orange); background: #fff; }
+  .mini-stat.finish { background: linear-gradient(135deg, #5A8100, #7aad00); }
+  .mini-stat.onplan { background: linear-gradient(135deg, #FFB400, #ffd166); }
+  .mini-stat.delay { background: linear-gradient(135deg, #FF6C02, #ff9a4d); }
+  .mini-stat.total { background: linear-gradient(135deg, #436000, #5A8100); }
+
+  /* SEARCH */
+  .search-bar-wrap { background: linear-gradient(135deg, #fff, #FFF9E9); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; margin-bottom: 20px; border: 1px solid var(--green-mid); }
+  .search-input-row { display: flex; gap: 10px; }
+  .search-input { flex: 1; padding: 10px 16px; border: 2px solid var(--green-pale); border-radius: 8px; font-size: 14px; font-family: 'Sarabun', sans-serif; outline: none; transition: border var(--transition); background: #fff; }
+  .search-input:focus { border-color: var(--amber); }
+  .search-results { margin-top: 16px; }
+  .search-result-item { background: linear-gradient(90deg, var(--cream), #fff); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all var(--transition); border-left: 4px solid var(--amber); }
+  .search-result-item:hover { background: linear-gradient(90deg, #fff3cc, #FFF9E9); border-left-color: var(--orange); }
+  .sri-type { font-size: 10px; font-weight: 700; letter-spacing: 1px; background: var(--green); color: #fff; padding: 2px 8px; border-radius: 10px; }
+  .sri-name { font-weight: 600; font-size: 14px; color: var(--green-dark); }
+  .sri-path { font-size: 11px; color: #aaa; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.35); z-index: 200; align-items: center; justify-content: center; }
+  .modal-overlay.show { display: flex; }
+  .modal { background: #fff; border-radius: 14px; padding: 26px 28px; min-width: 340px; max-width: 480px; box-shadow: 0 8px 40px rgba(0,0,0,0.18); }
+  .modal h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; color: var(--green-dark); margin-bottom: 18px; }
+  .form-group { margin-bottom: 14px; }
+  .form-label { display: block; font-size: 12px; font-weight: 700; color: var(--green-dark); letter-spacing: 0.5px; margin-bottom: 5px; }
+  .form-input { width: 100%; padding: 9px 13px; border: 2px solid #e8e4da; border-radius: 8px; font-size: 13.5px; font-family: 'Sarabun', sans-serif; outline: none; transition: border var(--transition); }
+  .form-input:focus { border-color: var(--green); }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+  .btn-cancel { background: #f5f5f5; color: #666; }
+  .btn-cancel:hover { background: #eee; }
+
+  /* PAGE hidden */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: 13px; font-weight: 600; cursor: pointer; padding: 6px 12px; border-radius: 8px; background: var(--green-pale); border: 1px solid var(--green-mid); transition: all var(--transition); margin-bottom: 16px; }
+  .back-btn:hover { background: #d8ecaa; border-color: var(--green); }
+
+  .empty-state { text-align: center; padding: 40px; color: #bbb; }
+  .empty-state .es-icon { font-size: 40px; margin-bottom: 10px; }
+  .empty-state p { font-size: 14px; }
+
+  .milestone-actual-pct, .milestone-actual-date {
+    font-size: 11px; font-weight: 700; border-radius: 6px; padding: 5px 6px;
+    border: 1.5px solid #e8d9a0; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .legend-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; font-size: 11px; }
+  .legend-dot { width: 13px; height: 13px; border-radius: 3px; display: inline-block; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-weight: 600; color: #555; }
+
+  /* DELETE BTN - small, subtle */
+  .delete-btn { background: none; border: none; cursor: pointer; color: #bbb; font-size: 11px; padding: 3px 6px; border-radius: 4px; transition: all var(--transition); line-height: 1; }
+  .delete-btn:hover { color: var(--red); background: #fde8e8; }
+
+  /* BACK BTN in topbar */
+  .back-btn-topbar { display: none; align-items: center; gap: 5px; color: var(--green); font-size: 12.5px; font-weight: 600; cursor: pointer; padding: 5px 11px; border-radius: 8px; background: var(--green-pale); border: 1px solid var(--green-mid); transition: all var(--transition); }
+  .back-btn-topbar:hover { background: #d8ecaa; border-color: var(--green); }
+  .back-btn-topbar.visible { display: inline-flex; }
+
+  /* AUTOSAVE TOAST */
+  .save-toast { position: fixed; bottom: 22px; right: 22px; background: #4caf50; color: #fff; font-size: 12px; font-weight: 700; padding: 8px 18px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; pointer-events: none; }
+  .save-toast.show { opacity: 1; transform: translateY(0); }
+
+  /* CONFIRM MODAL */
+  .confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.40); z-index: 300; align-items: center; justify-content: center; }
+  .confirm-overlay.show { display: flex; }
+  .confirm-box { background: #fff; border-radius: 14px; padding: 28px 30px; min-width: 300px; max-width: 400px; box-shadow: 0 8px 40px rgba(0,0,0,0.22); text-align: center; }
+  .confirm-box h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--red); margin-bottom: 10px; }
+  .confirm-box p { font-size: 13.5px; color: #555; margin-bottom: 22px; line-height: 1.6; }
+  .confirm-actions { display: flex; gap: 10px; justify-content: center; }
+
+  /* PCT INPUT WRAPPER */
+  .pct-input-wrap { position: relative; display: inline-flex; align-items: center; }
+  .pct-input-wrap .milestone-input-pct { padding-right: 18px; }
+  .pct-unit { position: absolute; right: 6px; font-size: 11px; font-weight: 700; color: #888; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">Q</div>
+    <div>
+      <div class="logo-text">QUALITY DATD</div>
+      <div class="logo-sub">Parts Management System</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Main Menu</div>
+    <div class="nav-item active" onclick="showPage('p-main')" id="nav-main">
+      <span class="nav-icon">🏭</span> Quality DATD Parts
+    </div>
+    <div class="nav-item" onclick="showPage('p-search')" id="nav-search">
+      <span class="nav-icon">🔍</span> Search / ค้นหา
+    </div>
+  </nav>
+  <div class="sidebar-footer">© 2026 Quality DATD System</div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="topbar">
+    <div class="breadcrumb" id="breadcrumb">
+      <a onclick="showPage('p-main')">Quality DATD Parts</a>
+    </div>
+    <div class="topbar-right">
+      <button class="back-btn-topbar" id="topbar-back-btn" onclick="topbarBack()">← กลับ</button>
+      <span id="sync-badge" style="font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">⏳ กำลังเชื่อมต่อ...</span>
+      <span class="today-badge" id="today-badge"></span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- PAGE 1: CUSTOMERS -->
+    <div class="page active" id="p-main">
+      <div class="page-header">
+        <div class="page-title">QUALITY DATD PARTS</div>
+        <div class="page-subtitle">ภาพรวมลูกค้าทั้งหมด</div>
+      </div>
+      <div class="summary-cards" id="main-summary"></div>
+      <div class="section-toolbar">
+        <div class="section-title-sm">รายชื่อลูกค้า</div>
+        <button class="btn btn-primary" onclick="openAddCustomer()">＋ เพิ่มลูกค้า</button>
+      </div>
+      <div class="customer-grid" id="customer-grid"></div>
+    </div>
+
+    <!-- PAGE 2: MODELS -->
+    <div class="page" id="p-customer">
+      <div class="page-header">
+        <div class="page-title" id="customer-title"></div>
+        <div class="page-subtitle">รายการ Model</div>
+      </div>
+      <div class="summary-cards" id="customer-summary"></div>
+      <div class="section-toolbar">
+        <div class="section-title-sm">รายการ Model</div>
+        <button class="btn btn-primary" onclick="openAddModel()">＋ เพิ่ม Model</button>
+      </div>
+      <div class="model-grid" id="model-grid"></div>
+    </div>
+
+    <!-- PAGE 3: PARTS -->
+    <div class="page" id="p-model">
+      <div class="page-header">
+        <div class="page-title" id="model-title"></div>
+        <div class="page-subtitle">รายการ Parts Number</div>
+      </div>
+      <div class="section-toolbar">
+        <div class="section-title-sm">Parts รายการ</div>
+        <button class="btn btn-primary" onclick="openAddPart()">＋ เพิ่ม Part</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>No.</th><th>Parts Number</th><th>Part Name</th><th>สถานะ</th><th>จัดการ</th></tr></thead>
+          <tbody id="parts-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGE 4: TRIALS -->
+    <div class="page" id="p-part">
+      <div class="page-header">
+        <div class="page-title" id="part-title"></div>
+        <div class="page-subtitle" id="part-subtitle"></div>
+      </div>
+      <!-- Legend -->
+      <div class="legend-row">
+        <span style="font-size:11px;font-weight:700;color:#888;letter-spacing:0.5px;">ACTUAL สี:</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4caf50"></span>เปอร์เซ็น ≥ Plan</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#FFB400"></span>เปอร์เซ็น &lt; Plan</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4caf50"></span>วันที่ ≤ Plan</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#e53935"></span>วันที่ &gt; Plan</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4caf50;border:2px solid #2e7d32"></span>Slot LOCKED ✔</span>
+      </div>
+      <!-- Milestones editable section -->
+      <div class="milestones-grid-part" id="milestones-part-grid"></div>
+      <!-- Trial History -->
+      <div class="trial-table-wrap">
+        <div class="trial-table-header">
+          <h3>ประวัติ (History)</h3>
+          <button class="btn btn-amber btn-sm" onclick="openAddTrial()">＋ เพิ่มครั้งที่</button>
+        </div>
+        <table>
+          <thead><tr><th>ครั้งที่</th><th>เปอร์เซ็นต์</th><th>วันที่</th><th>หมายเหตุ</th><th>จัดการ</th></tr></thead>
+          <tbody id="trials-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PAGE: SEARCH -->
+    <div class="page" id="p-search">
+      <div class="page-header">
+        <div class="page-title">ค้นหา / Search</div>
+        <div class="page-subtitle">ค้นหาลูกค้า, Model, Parts Number, Part Name</div>
+      </div>
+      <div class="search-bar-wrap">
+        <div class="search-input-row">
+          <input class="search-input" id="search-input" placeholder="พิมพ์ชื่อลูกค้า, Model, Parts Number หรือ Part Name..." oninput="doSearch(this.value)">
+          <button class="btn btn-primary" onclick="doSearch(document.getElementById('search-input').value)">🔍 ค้นหา</button>
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="modal-title">เพิ่มข้อมูล</h3>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" onclick="closeModalDirect()">ยกเลิก</button>
+      <button class="btn btn-primary" id="modal-submit" onclick="submitModal()">บันทึก</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <h4>⚠️ ยืนยันการลบ</h4>
+    <p id="confirm-msg">ต้องการลบรายการนี้ใช่หรือไม่?<br>การดำเนินการนี้ไม่สามารถย้อนกลับได้</p>
+    <div class="confirm-actions">
+      <button class="btn btn-cancel" onclick="closeConfirm()">ยกเลิก</button>
+      <button class="btn" style="background:var(--red);color:#fff;" onclick="doConfirm()">ลบออก</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTOSAVE TOAST -->
+<div class="save-toast" id="save-toast">💾 บันทึกแล้ว</div>
+
+<script>
+// ============ DATA ============
+let data = {
+  customers: [
+    {
+      id: 1, name: "TOYOTA",
+      models: [
+        { id: 1, name: "380A", parts: [
+          { id: 1, number: "11111-00001", name: "BRACKET,FRONT", status: "FINISH", trials: [{t:"T0",pct:"70%",date:"1/4/2026",note:""},{t:"T1",pct:"80%",date:"15/5/2026",note:""}]},
+          { id: 2, number: "11111-00002", name: "COVER,ENGINE", status: "ON PLAN", trials: [{t:"T0",pct:"60%",date:"10/3/2026",note:""}]},
+        ]},
+        { id: 2, name: "647B", parts: [
+          { id: 1, number: "55843-06350", name: "DUCT,HEATER TO REGISTER", status: "ON PLAN", trials: [
+            {t:"T0",pct:"70%",date:"1/4/2026",note:""},
+            {t:"T1",pct:"80%",date:"1/6/2026",note:""},
+            {t:"T2",pct:"91%",date:"20/6/2026",note:""},
+            {t:"T3",pct:"100%",date:"24/8/2026",note:""}
+          ]},
+          { id: 2, number: "55971-06170", name: "DUCT,SIDE DEEROTER NOZZLE", status: "FINISH", trials: []},
+          { id: 3, number: "58861-06220", name: "DUCT,CONSOLE BOX", status: "DELAY", trials: []},
+          { id: 4, number: "87215-06080", name: "GUIDE,AIR DUCT,RR RH", status: "ON PLAN", trials: []},
+        ]},
+        { id: 3, name: "518W", parts: [] },
+      ]
+    },
+    {
+      id: 2, name: "HONDA",
+      models: [
+        { id: 1, name: "HDA-01", parts: [
+          { id: 1, number: "22222-00001", name: "PANEL,DOOR INNER", status: "FINISH", trials: [] },
+          { id: 2, number: "22222-00002", name: "CLIP,TRIM", status: "ON PLAN", trials: [] },
+          { id: 3, number: "22222-00003", name: "COVER,DASH", status: "DELAY", trials: [] },
+        ]},
+      ]
+    },
+    {
+      id: 3, name: "ISUZU",
+      models: [
+        { id: 1, name: "ISZ-X1", parts: [
+          { id: 1, number: "33333-00001", name: "DUCT,AIR INTAKE", status: "FINISH", trials: [] },
+          { id: 2, number: "33333-00002", name: "HOSE,COOLING", status: "ON PLAN", trials: [] },
+          { id: 3, number: "33333-00003", name: "BRACKET,ENGINE MOUNT", status: "DELAY", trials: [] },
+        ]},
+      ]
+    },
+  ]
+};
+
+let currentCustomerId = null;
+let currentModelId = null;
+let currentPartId = null;
+let modalAction = null;
+let nextCustomerId = 4;
+let nextModelId = 100;
+let nextPartId = 200;
+
+// Milestones per part (key = cid-mid-pid)
+let partMilestones = {};
+function getMilestones(cid, mid, pid) {
+  let key = cid + '-' + mid + '-' + pid;
+  if (!partMilestones[key]) {
+    partMilestones[key] = [
+      {label:"FIRST LOT",    plan:{pct:"90%", date:"10/6/2026"}, actual:{pct:"",date:""}},
+      {label:"BEFORE GRAIN", plan:{pct:"100%",date:"25/8/2026"}, actual:{pct:"",date:""}},
+      {label:"GRAIN LOT",    plan:{pct:"100%",date:"1/11/2026"}, actual:{pct:"",date:""}},
+      {label:"PRE-MASS",     plan:{pct:"100%",date:"15/12/2026"},actual:{pct:"",date:""}},
+      {label:"MASS PROJECT", plan:{pct:"100%",date:"20/2/2027"}, actual:{pct:"",date:""}},
+    ];
+  }
+  return partMilestones[key];
+}
+
+// ---- Milestone auto-link logic ----
+// Parse "DD/M/YYYY" or "D/M/YY" -> Date
+function parseDate(str) {
+  if (!str) return null;
+  let parts = str.trim().split('/');
+  if (parts.length < 3) return null;
+  let d = parseInt(parts[0],10);
+  let mo = parseInt(parts[1],10) - 1;
+  let y = parseInt(parts[2],10);
+  if (y < 100) y += 2000;
+  let dt = new Date(y, mo, d);
+  return isNaN(dt.getTime()) ? null : dt;
+}
+
+// Parse "80%" -> 80
+function parsePct(str) {
+  if (!str) return null;
+  let n = parseFloat(str.replace('%','').trim());
+  return isNaN(n) ? null : n;
+}
+
+// Find which milestone slot the "current active" slot is (the first NOT locked)
+// A slot is "locked/done" when its actual pct >= plan pct
+function getActiveMilestoneIdx(ms) {
+  for (let i = 0; i < ms.length; i++) {
+    let planPct = parsePct(ms[i].plan.pct);
+    let actPct  = parsePct(ms[i].actual.pct);
+    // Not locked: actual pct not yet >= plan pct
+    if (actPct === null || planPct === null || actPct < planPct) {
+      return i;
+    }
+  }
+  return -1; // all done
+}
+
+// Given the trial history of a part, compute what each milestone's actual should show
+// Returns updated ms array (does not mutate original)
+function computeMilestoneActuals(ms, trials) {
+  // Clone milestones
+  let result = ms.map(m2 => ({
+    label: m2.label,
+    plan: {...m2.plan},
+    actual: {pct:'', date:''}
+  }));
+
+  // Walk through trials in order; assign to the active (unlocked) milestone
+  let trialIdx = 0;
+  for (let msIdx = 0; msIdx < result.length; msIdx++) {
+    if (trialIdx >= trials.length) break;
+    let planPct = parsePct(result[msIdx].plan.pct);
+    // Keep assigning trials to this slot until pct >= plan pct
+    while (trialIdx < trials.length) {
+      let tr = trials[trialIdx];
+      let tPct = parsePct(tr.pct);
+      // Always show latest trial in this slot's actual
+      result[msIdx].actual.pct  = tr.pct;
+      result[msIdx].actual.date = tr.date;
+      trialIdx++;
+      // If this trial meets/exceeds plan pct -> lock this slot, move to next
+      if (tPct !== null && planPct !== null && tPct >= planPct) {
+        break; // slot locked, go to next milestone
+      }
+    }
+  }
+  return result;
+}
+
+// Color helpers
+function pctColor(actualPct, planPct) {
+  // yellow if below plan, green if >= plan
+  if (actualPct === null || planPct === null) return '';
+  return actualPct >= planPct ? 'background:#4caf50;color:#fff;' : 'background:#FFB400;color:#333;';
+}
+function dateColor(actualDate, planDate) {
+  // green if actual <= plan, red if actual > plan
+  if (!actualDate || !planDate) return '';
+  let a = parseDate(actualDate);
+  let p = parseDate(planDate);
+  if (!a || !p) return '';
+  return a <= p ? 'background:#4caf50;color:#fff;' : 'background:#e53935;color:#fff;';
+}
+
+// ============ COMPUTE PART STATUS FROM MILESTONE DATA ============
+// Returns: "FINISH" | "ON PLAN" | "DELAY" | "-"
+function computePartStatus(cid, mid, pid, trials) {
+  let baseMs = getMilestones(cid, mid, pid);
+  let ms = computeMilestoneActuals(baseMs, trials);
+
+  // Check if any milestone has actual data at all
+  let hasAnyActual = ms.some(m2 => m2.actual.pct || m2.actual.date);
+
+  // Also check if any plan was manually entered (non-default)
+  // We check via the stored partMilestones – if the key exists and has actual data
+  let key = cid + '-' + mid + '-' + pid;
+  let storedMs = partMilestones[key];
+  let hasStoredActual = storedMs && storedMs.some(m2 => m2.actual && (m2.actual.pct || m2.actual.date));
+
+  // Check each milestone's actual pct color ONLY
+  // pctColor: yellow if actualPct < planPct, green if >= planPct
+  // Also flag RED (DELAY) if: no actual pct yet AND plan date has already passed (overdue)
+  // — this mirrors the red "DELAY" shown in the % Actual box on page 4
+  let hasRed = false;
+  let hasYellow = false;
+  let today = new Date(); today.setHours(0,0,0,0);
+
+  ms.forEach(m2 => {
+    let planPct     = parsePct(m2.plan.pct);
+    let actPct      = parsePct(m2.actual.pct);
+    let planDateObj = parseDate(m2.plan.date);
+    let locked      = actPct !== null && planPct !== null && actPct >= planPct;
+
+    if (locked) return; // slot complete, skip
+
+    if (!m2.actual.pct) {
+      // No actual pct yet — check if overdue (plan date passed) → red on page 4
+      if (planDateObj && today > planDateObj) hasRed = true;
+      return;
+    }
+
+    // Has actual pct
+    if (actPct !== null && planPct !== null) {
+      if (actPct < planPct) hasYellow = true;
+      // green if >= plan → no flag (but locked check above already handles this)
+    }
+  });
+
+  if (hasRed) return 'DELAY';
+  if (hasYellow) return 'ON PLAN';
+  // All pct green (all actuals meet/exceed plan pct)
+  if (hasAnyActual || hasStoredActual) return 'FINISH';
+  // No actual data at all and nothing overdue yet
+  return '-';
+}
+
+// ============ STATS ============
+function calcStats(parts, cid, mid) {
+  let finish = 0, onplan = 0, delay = 0, none = 0;
+  parts.forEach(p => {
+    let st = (cid && mid) ? computePartStatus(cid, mid, p.id, p.trials) : p.status;
+    if (st === "FINISH") finish++;
+    else if (st === "ON PLAN") onplan++;
+    else if (st === "DELAY") delay++;
+    else none++;
+  });
+  return { finish, onplan, delay, total: finish + onplan + delay };
+}
+function calcCustomerStats(customer) {
+  let finish = 0, onplan = 0, delay = 0;
+  customer.models.forEach(m => {
+    let s = calcStats(m.parts, customer.id, m.id);
+    finish += s.finish; onplan += s.onplan; delay += s.delay;
+  });
+  return { finish, onplan, delay, total: finish + onplan + delay };
+}
+function calcAllStats() {
+  let finish = 0, onplan = 0, delay = 0;
+  data.customers.forEach(c => {
+    let s = calcCustomerStats(c);
+    finish += s.finish; onplan += s.onplan; delay += s.delay;
+  });
+  return { finish, onplan, delay, total: finish + onplan + delay };
+}
+
+// ============ RENDER ============
+function renderSummaryCards(containerId, stats) {
+  document.getElementById(containerId).innerHTML = `
+    <div class="summary-card finish"><div class="card-num">${stats.finish}</div><div class="card-label">FINISH</div></div>
+    <div class="summary-card onplan"><div class="card-num">${stats.onplan}</div><div class="card-label">ON PLAN</div></div>
+    <div class="summary-card delay"><div class="card-num">${stats.delay}</div><div class="card-label">DELAY</div></div>
+    <div class="summary-card total"><div class="card-num">${stats.total}</div><div class="card-label">TOTAL</div></div>
+  `;
+}
+
+function renderCustomerGrid() {
+  let stats = calcAllStats();
+  renderSummaryCards('main-summary', stats);
+  let grid = document.getElementById('customer-grid');
+  if (data.customers.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div class="es-icon">🏭</div><p>ยังไม่มีลูกค้า กด "เพิ่มลูกค้า" เพื่อเริ่มต้น</p></div>';
+    return;
+  }
+  grid.innerHTML = data.customers.map(c => {
+    let s = calcCustomerStats(c);
+    return `<div class="customer-card">
+      <div class="customer-card-header" onclick="openCustomer(${c.id})">
+        <span class="customer-name">${c.name}</span>
+        <span style="color:rgba(255,255,255,0.6);font-size:12px">${c.models.length} Models</span>
+      </div>
+      <div class="customer-card-body">
+        <div class="mini-stats">
+          <div class="mini-stat finish"><div class="ms-num">${s.finish}</div><div class="ms-label">FINISH</div></div>
+          <div class="mini-stat onplan"><div class="ms-num">${s.onplan}</div><div class="ms-label">ON PLAN</div></div>
+          <div class="mini-stat delay"><div class="ms-num">${s.delay}</div><div class="ms-label">DELAY</div></div>
+          <div class="mini-stat total"><div class="ms-num">${s.total}</div><div class="ms-label">TOTAL</div></div>
+        </div>
+        <div class="card-actions">
+          <button class="delete-btn" onclick="event.stopPropagation();deleteCustomer(${c.id})" title="ลบลูกค้า" style="margin-top:10px;">✕ ลบ</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderModelGrid() {
+  let customer = data.customers.find(c => c.id === currentCustomerId);
+  document.getElementById('customer-title').textContent = 'QUALITY DATD PARTS — ' + customer.name;
+  // calc model stats (each model's parts)
+  let allParts = customer.models.flatMap(m => m.parts);
+  let stats = calcCustomerStats(customer);
+  renderSummaryCards('customer-summary', stats);
+  let grid = document.getElementById('model-grid');
+  if (customer.models.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div class="es-icon">📦</div><p>ยังไม่มี Model กด "เพิ่ม Model" เพื่อเริ่มต้น</p></div>';
+    return;
+  }
+  grid.innerHTML = customer.models.map(m => {
+    let s = calcStats(m.parts, customer.id, m.id);
+    return `<div class="model-card">
+      <div class="model-card-header" onclick="openModel(${m.id})">
+        <span class="model-name">${m.name}</span>
+      </div>
+      <div class="model-card-body">
+        <div class="mini-stats">
+          <div class="mini-stat finish"><div class="ms-num">${s.finish}</div><div class="ms-label">FIN</div></div>
+          <div class="mini-stat onplan"><div class="ms-num">${s.onplan}</div><div class="ms-label">PLAN</div></div>
+          <div class="mini-stat delay"><div class="ms-num">${s.delay}</div><div class="ms-label">DELAY</div></div>
+          <div class="mini-stat total"><div class="ms-num">${s.total}</div><div class="ms-label">TOTAL</div></div>
+        </div>
+        <div class="card-actions">
+          <button class="delete-btn" onclick="event.stopPropagation();deleteModel(${m.id})" title="ลบ Model" style="margin-top:10px;">✕ ลบ</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderPartsTable() {
+  let customer = data.customers.find(c => c.id === currentCustomerId);
+  let model = customer.models.find(m => m.id === currentModelId);
+  document.getElementById('model-title').textContent = 'QUALITY DATD PARTS ' + customer.name + ' ' + model.name;
+  // parts
+  let tbody = document.getElementById('parts-tbody');
+  if (model.parts.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:#bbb">ยังไม่มี Part กด "เพิ่ม Part" เพื่อเริ่มต้น</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = model.parts.map((p,i) => {
+    let dynStatus = computePartStatus(currentCustomerId, currentModelId, p.id, p.trials);
+    let sc;
+    if (dynStatus === 'FINISH') sc = 'badge-green';
+    else if (dynStatus === 'ON PLAN') sc = 'badge-amber';
+    else if (dynStatus === 'DELAY') sc = 'badge-red';
+    else sc = 'badge-gray';
+    return `<tr style="cursor:pointer;" onclick="openPart(${p.id})">
+      <td>${i+1}</td>
+      <td style="color:var(--green);font-weight:600;">${p.number}</td>
+      <td style="color:var(--green);font-weight:600;">${p.name}</td>
+      <td><span class="badge ${sc}">${dynStatus}</span></td>
+      <td><button class="delete-btn" onclick="event.stopPropagation();deletePart(${p.id})" title="ลบ Part">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderTrials() {
+  let customer = data.customers.find(c => c.id === currentCustomerId);
+  let model = customer.models.find(m => m.id === currentModelId);
+  let part = model.parts.find(p => p.id === currentPartId);
+  document.getElementById('part-title').textContent = part.number;
+  document.getElementById('part-subtitle').textContent = part.name;
+
+  // Get base milestones (plan values) for this part
+  let baseMs = getMilestones(currentCustomerId, currentModelId, currentPartId);
+
+  // Compute actuals from trial history automatically
+  let ms = computeMilestoneActuals(baseMs, part.trials);
+
+  let gradients = [
+    'linear-gradient(135deg,#eef5d6,#FFF9E9)',
+    'linear-gradient(135deg,#FFF9E9,#fff3cc)',
+    'linear-gradient(135deg,#fff3cc,#ffe8aa)',
+    'linear-gradient(135deg,#ffe8c0,#ffd4a0)',
+    'linear-gradient(135deg,#ffd4a0,#ffcb8a)'
+  ];
+
+  document.getElementById('milestones-part-grid').innerHTML = ms.map((m2, idx) => {
+    let planPct  = parsePct(m2.plan.pct);
+    let actPct   = parsePct(m2.actual.pct);
+    let locked   = actPct !== null && planPct !== null && actPct >= planPct;
+    let lockedBadge = locked ? '<span style="font-size:10px;background:#4caf50;color:#fff;border-radius:4px;padding:1px 6px;margin-left:4px">✔ LOCKED</span>' : '';
+
+    let pctStyle  = m2.actual.pct  ? pctColor(actPct, planPct) : '';
+    let dateStyle = m2.actual.date ? dateColor(m2.actual.date, m2.plan.date) : '';
+
+    // If no actual data yet, check if plan date has passed → show red warning
+    let today = new Date(); today.setHours(0,0,0,0);
+    let planDateObj = parseDate(m2.plan.date);
+    let hasActual = m2.actual.pct || m2.actual.date;
+    let isOverdue = !hasActual && planDateObj && today > planDateObj && !locked;
+    let overdueStyle = 'background:#e53935;color:#fff;';
+
+    return `
+    <div class="milestone-edit-card" style="background:${gradients[idx]};${locked?'box-shadow:0 0 0 2px #4caf50;':''}">
+      <div class="milestone-edit-title">${m2.label}${lockedBadge}</div>
+      <div class="milestone-edit-row">
+        <div class="milestone-edit-label plan-label">📅 PLAN</div>
+        <div class="milestone-inputs">
+          <div class="pct-input-wrap">
+            <input class="milestone-input-pct" type="text" placeholder="0" value="${parsePct(m2.plan.pct) !== null ? parsePct(m2.plan.pct) : ''}"
+              onchange="updateMilestonePlan(${currentCustomerId},${currentModelId},${currentPartId},${idx},'pct',this.value+'%')">
+            <span class="pct-unit">%</span>
+          </div>
+          <input class="milestone-input-date" type="text" placeholder="วันที่" value="${m2.plan.date}"
+            onchange="updateMilestonePlan(${currentCustomerId},${currentModelId},${currentPartId},${idx},'date',this.value)">
+        </div>
+      </div>
+      <div class="milestone-edit-row">
+        <div class="milestone-edit-label actual-label">✅ ACTUAL ${locked ? '' : (hasActual ? '⟵ จากประวัติ' : '')}</div>
+        <div class="milestone-inputs">
+          <div class="milestone-actual-pct" style="
+            ${isOverdue ? overdueStyle : pctStyle}
+            min-width:52px; max-width:52px; text-align:center;
+            border-radius:6px; padding:5px 6px; font-size:10px; font-weight:700;
+            border: 1.5px solid ${(pctStyle || isOverdue) ? 'transparent' : '#e8d9a0'};
+            background: ${(pctStyle || isOverdue) ? '' : '#fff3cc'};
+            display:flex; align-items:center; justify-content:center;
+          ">${isOverdue ? 'DELAY' : (m2.actual.pct || '—')}</div>
+          <div class="milestone-actual-date" style="
+            ${isOverdue ? overdueStyle : dateStyle}
+            flex:1; text-align:center;
+            border-radius:6px; padding:5px 6px; font-size:10px; font-weight:700;
+            border: 1.5px solid ${(dateStyle || isOverdue) ? 'transparent' : '#e8d9a0'};
+            background: ${(dateStyle || isOverdue) ? '' : '#fff3cc'};
+            display:flex; align-items:center; justify-content:center;
+          ">${isOverdue ? 'DELAY' : (m2.actual.date || '—')}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  let tbody = document.getElementById('trials-tbody');
+  if (part.trials.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:#bbb">ยังไม่มีประวัติการทดสอบ</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = part.trials.map((tr, i) => `<tr>
+    <td><strong>${tr.t || 'T' + i}</strong></td>
+    <td><strong>${tr.pct}</strong></td>
+    <td>${tr.date}</td>
+    <td>${tr.note || '—'}</td>
+    <td><button class="delete-btn" onclick="deleteTrial(${i})">✕</button></td>
+  </tr>`).join('');
+}
+
+// ============ NAVIGATION ============
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (pageId === 'p-search') document.getElementById('nav-search').classList.add('active');
+  else document.getElementById('nav-main').classList.add('active');
+  updateBreadcrumb(pageId);
+  if (pageId === 'p-main') { renderCustomerGrid(); hideBackBtn(); }
+  if (pageId === 'p-search') hideBackBtn();
+}
+
+function updateBreadcrumb(pageId) {
+  let bc = document.getElementById('breadcrumb');
+  if (pageId === 'p-main') {
+    bc.innerHTML = `<a onclick="showPage('p-main')">Quality DATD Parts</a>`;
+  } else if (pageId === 'p-customer') {
+    let c = data.customers.find(c2 => c2.id === currentCustomerId);
+    bc.innerHTML = `<a onclick="showPage('p-main')">Quality DATD Parts</a> <span>›</span> <a>${c ? c.name : ''}</a>`;
+  } else if (pageId === 'p-model') {
+    let c = data.customers.find(c2 => c2.id === currentCustomerId);
+    let m = c ? c.models.find(m2 => m2.id === currentModelId) : null;
+    bc.innerHTML = `<a onclick="showPage('p-main')">Quality DATD Parts</a> <span>›</span> <a onclick="openCustomer(${currentCustomerId})">${c ? c.name : ''}</a> <span>›</span> <a>${m ? m.name : ''}</a>`;
+  } else if (pageId === 'p-part') {
+    let c = data.customers.find(c2 => c2.id === currentCustomerId);
+    let m = c ? c.models.find(m2 => m2.id === currentModelId) : null;
+    let p = m ? m.parts.find(p2 => p2.id === currentPartId) : null;
+    bc.innerHTML = `<a onclick="showPage('p-main')">Quality DATD Parts</a> <span>›</span> <a onclick="openCustomer(${currentCustomerId})">${c ? c.name : ''}</a> <span>›</span> <a onclick="openModel(${currentModelId})">${m ? m.name : ''}</a> <span>›</span> <a>${p ? p.number : ''}</a>`;
+  } else if (pageId === 'p-search') {
+    bc.innerHTML = `<a onclick="showPage('p-search')">ค้นหา</a>`;
+  }
+}
+
+function openCustomer(id) {
+  currentCustomerId = id;
+  renderModelGrid();
+  setBackBtn(() => showPage('p-main'));
+  showPage('p-customer');
+  updateBreadcrumb('p-customer');
+}
+
+function openModel(id) {
+  currentModelId = id;
+  renderPartsTable();
+  setBackBtn(() => openCustomer(currentCustomerId));
+  showPage('p-model');
+  updateBreadcrumb('p-model');
+}
+
+function openPart(id) {
+  currentPartId = id;
+  renderTrials();
+  setBackBtn(() => { renderPartsTable(); showPage('p-model'); updateBreadcrumb('p-model'); setBackBtn(() => openCustomer(currentCustomerId)); });
+  showPage('p-part');
+  updateBreadcrumb('p-part');
+}
+
+function updateMilestonePlan(cid, mid, pid, idx, prop, value) {
+  let ms = getMilestones(cid, mid, pid);
+  ms[idx].plan[prop] = value;
+  renderTrials();
+  autoSave();
+}
+
+// ============ FIREBASE CONFIG ============
+var FB_URL = "https://quality-data-5d476-default-rtdb.asia-southeast1.firebasedatabase.app/qdatd_v1.json";
+var _lastPushedJSON = ""; // เก็บ JSON ที่เราเพิ่งส่งขึ้น Firebase ไว้เปรียบเทียบ
+
+// ============ AUTOSAVE ============
+var _saveTimer = null;
+function autoSave() {
+  // 1) บันทึก localStorage เหมือนเดิม
+  try {
+    let saveData = { data, partMilestones, nextCustomerId, nextModelId, nextPartId };
+    localStorage.setItem('qdatd_data', JSON.stringify(saveData));
+  } catch(e) {}
+
+  // 2) ส่งขึ้น Firebase (debounce 600ms)
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(function() {
+    var payload = { data: data, partMilestones: partMilestones, nextCustomerId: nextCustomerId, nextModelId: nextModelId, nextPartId: nextPartId };
+    var body = JSON.stringify(payload);
+    _lastPushedJSON = body; // จำไว้ว่าเราส่งอะไรขึ้นไป
+
+    fetch(FB_URL, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: body })
+      .then(function(r) {
+        if (r.ok) showSaveToast('☁️ ซิงก์แล้ว', '#4caf50');
+        else      showSaveToast('⚠️ ซิงก์ไม่สำเร็จ', '#e53935');
+      })
+      .catch(function() { showSaveToast('💾 บันทึกเฉพาะเครื่อง', '#ff9800'); });
+  }, 600);
+}
+
+function showSaveToast(msg, color) {
+  let t = document.getElementById('save-toast');
+  t.textContent = msg || '💾 บันทึกแล้ว';
+  t.style.background = color || '#4caf50';
+  clearTimeout(window._toastHide);
+  t.classList.add('show');
+  window._toastHide = setTimeout(function() { t.classList.remove('show'); }, 2500);
+}
+
+function loadSavedData() {
+  try {
+    let raw = localStorage.getItem('qdatd_data');
+    if (!raw) return;
+    let saved = JSON.parse(raw);
+    if (saved.data) data = saved.data;
+    if (saved.partMilestones) partMilestones = saved.partMilestones;
+    if (saved.nextCustomerId) nextCustomerId = saved.nextCustomerId;
+    if (saved.nextModelId) nextModelId = saved.nextModelId;
+    if (saved.nextPartId) nextPartId = saved.nextPartId;
+  } catch(e) {}
+}
+
+// ============ FIREBASE POLLING (sync จากเครื่องอื่น) ============
+function _fbPoll() {
+  fetch(FB_URL)
+    .then(function(r) { return r.json(); })
+    .then(function(saved) {
+      // อัปเดต badge
+      var badge = document.getElementById('sync-badge');
+      if (badge) {
+        badge.textContent = '🔴 Real-time LIVE';
+        badge.style.background = '#e8f5e9';
+        badge.style.color = '#2e7d32';
+        badge.style.borderColor = '#a5d6a7';
+      }
+
+      if (!saved) return; // Firebase ว่าง ไม่ทำอะไร
+
+      var incoming = JSON.stringify(saved);
+
+      // ถ้าตรงกับที่เราเพิ่งส่งขึ้น = ข้อมูลของเราเอง ข้ามไป
+      if (incoming === _lastPushedJSON) return;
+
+      // ครั้งแรกที่ดึงข้อมูล (ยังไม่เคย push อะไรขึ้นไป)
+      if (_lastPushedJSON === "") {
+        _lastPushedJSON = incoming;
+        // ใส่ข้อมูลจาก Firebase เข้าหน่วยความจำ
+        if (saved.data)           data             = saved.data;
+        if (saved.partMilestones) partMilestones   = saved.partMilestones;
+        if (saved.nextCustomerId) nextCustomerId   = saved.nextCustomerId;
+        if (saved.nextModelId)    nextModelId      = saved.nextModelId;
+        if (saved.nextPartId)     nextPartId       = saved.nextPartId;
+        // render หน้าหลักครั้งเดียวตอนเริ่ม (ผู้ใช้ยังไม่ได้คลิกอะไร)
+        renderCustomerGrid();
+        return;
+      }
+
+      // มีเครื่องอื่นแก้ไขข้อมูล → แจ้งให้ผู้ใช้ทราบ และ reload
+      _lastPushedJSON = incoming;
+      if (saved.data)           data             = saved.data;
+      if (saved.partMilestones) partMilestones   = saved.partMilestones;
+      if (saved.nextCustomerId) nextCustomerId   = saved.nextCustomerId;
+      if (saved.nextModelId)    nextModelId      = saved.nextModelId;
+      if (saved.nextPartId)     nextPartId       = saved.nextPartId;
+
+      // แสดงปุ่มให้ reload — ไม่แตะ DOM อื่นเลย
+      var t = document.getElementById('save-toast');
+      t.innerHTML = '🔄 มีข้อมูลใหม่จากเครื่องอื่น &nbsp;<button onclick="location.reload()" style="background:#fff;color:#1b5e20;border:none;border-radius:6px;padding:3px 10px;font-weight:700;cursor:pointer;">โหลดใหม่</button>';
+      t.style.background = '#2e7d32';
+      t.classList.add('show');
+    })
+    .catch(function() {
+      var badge = document.getElementById('sync-badge');
+      if (badge) {
+        badge.textContent = '⚠️ ออฟไลน์';
+        badge.style.background = '#fdecea';
+        badge.style.color = '#c62828';
+        badge.style.borderColor = '#ef9a9a';
+      }
+    });
+}
+
+// เริ่ม polling หลัง init เสร็จ
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    _fbPoll(); // poll ครั้งแรกทันที
+    setInterval(_fbPoll, 5000); // poll ทุก 5 วินาที
+  }, 500);
+});
+
+// ============ CONFIRM DELETE ============
+let _confirmCb = null;
+function confirmDelete(msg, cb) {
+  document.getElementById('confirm-msg').innerHTML = (msg || 'ต้องการลบรายการนี้ใช่หรือไม่?') + '<br><small style="color:#aaa">การดำเนินการนี้ไม่สามารถย้อนกลับได้</small>';
+  _confirmCb = cb;
+  document.getElementById('confirm-overlay').classList.add('show');
+}
+function closeConfirm() { document.getElementById('confirm-overlay').classList.remove('show'); _confirmCb = null; }
+function doConfirm() { if (_confirmCb) _confirmCb(); closeConfirm(); }
+
+// ============ TOPBAR BACK ============
+let _backFn = null;
+function setBackBtn(fn) {
+  _backFn = fn;
+  document.getElementById('topbar-back-btn').classList.add('visible');
+}
+function hideBackBtn() {
+  _backFn = null;
+  document.getElementById('topbar-back-btn').classList.remove('visible');
+}
+function topbarBack() { if (_backFn) _backFn(); }
+// ============ MODAL ============
+let modalCallback = null;
+function openModal(title, bodyHtml, cb) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-body').innerHTML = bodyHtml;
+  modalCallback = cb;
+  document.getElementById('modal-overlay').classList.add('show');
+}
+function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('show'); }
+function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalDirect(); }
+function submitModal() { if (modalCallback) modalCallback(); closeModalDirect(); }
+
+function openAddCustomer() {
+  openModal('เพิ่มลูกค้าใหม่', `
+    <div class="form-group"><label class="form-label">ชื่อลูกค้า</label><input class="form-input" id="f-cname" placeholder="เช่น TOYOTA, HONDA..."></div>
+  `, () => {
+    let name = document.getElementById('f-cname').value.trim().toUpperCase();
+    if (!name) return;
+    data.customers.push({ id: nextCustomerId++, name, models: [] });
+    renderCustomerGrid();
+    autoSave();
+  });
+}
+
+function deleteCustomer(id) {
+  let c = data.customers.find(c2 => c2.id === id);
+  confirmDelete(`ต้องการลบลูกค้า <strong>${c ? c.name : ''}</strong> ออกจากระบบ?`, () => {
+    data.customers = data.customers.filter(c2 => c2.id !== id);
+    renderCustomerGrid();
+    autoSave();
+  });
+}
+
+function openAddModel() {
+  openModal('เพิ่ม Model ใหม่', `
+    <div class="form-group"><label class="form-label">ชื่อ Model</label><input class="form-input" id="f-mname" placeholder="เช่น 647B, 380A..."></div>
+  `, () => {
+    let name = document.getElementById('f-mname').value.trim().toUpperCase();
+    if (!name) return;
+    let c = data.customers.find(c2 => c2.id === currentCustomerId);
+    c.models.push({ id: nextModelId++, name, parts: [] });
+    renderModelGrid();
+    autoSave();
+  });
+}
+
+function deleteModel(id) {
+  let c = data.customers.find(c2 => c2.id === currentCustomerId);
+  let m = c ? c.models.find(m2 => m2.id === id) : null;
+  confirmDelete(`ต้องการลบ Model <strong>${m ? m.name : ''}</strong> ออกจากระบบ?`, () => {
+    c.models = c.models.filter(m2 => m2.id !== id);
+    renderModelGrid();
+    autoSave();
+  });
+}
+
+function openAddPart() {
+  openModal('เพิ่ม Part ใหม่', `
+    <div class="form-group"><label class="form-label">Parts Number</label><input class="form-input" id="f-pnum" placeholder="เช่น 55843-06350"></div>
+    <div class="form-group"><label class="form-label">Part Name</label><input class="form-input" id="f-pname" placeholder="เช่น DUCT,HEATER TO REGISTER"></div>
+    <div class="form-group"><label class="form-label">สถานะ</label>
+      <select class="form-input" id="f-pstatus">
+        <option value="FINISH">FINISH</option>
+        <option value="ON PLAN" selected>ON PLAN</option>
+        <option value="DELAY">DELAY</option>
+      </select>
+    </div>
+  `, () => {
+    let num = document.getElementById('f-pnum').value.trim();
+    let name = document.getElementById('f-pname').value.trim().toUpperCase();
+    let status = document.getElementById('f-pstatus').value;
+    if (!num || !name) return;
+    let c = data.customers.find(c2 => c2.id === currentCustomerId);
+    let m = c.models.find(m2 => m2.id === currentModelId);
+    m.parts.push({ id: nextPartId++, number: num, name, status, trials: [] });
+    renderPartsTable();
+    autoSave();
+  });
+}
+
+function deletePart(id) {
+  let c = data.customers.find(c2 => c2.id === currentCustomerId);
+  let m = c.models.find(m2 => m2.id === currentModelId);
+  let p = m ? m.parts.find(p2 => p2.id === id) : null;
+  confirmDelete(`ต้องการลบ Part <strong>${p ? p.number : ''}</strong> ออกจากระบบ?`, () => {
+    m.parts = m.parts.filter(p2 => p2.id !== id);
+    renderPartsTable();
+    autoSave();
+  });
+}
+
+function openAddTrial() {
+  let c = data.customers.find(c2 => c2.id === currentCustomerId);
+  let m = c.models.find(m2 => m2.id === currentModelId);
+  let part = m.parts.find(p => p.id === currentPartId);
+  let nextT = 'T' + part.trials.length;
+  openModal('เพิ่มการทดสอบครั้งใหม่', `
+    <div class="form-group"><label class="form-label">ครั้งที่</label><input class="form-input" id="f-tname" value="${nextT}"></div>
+    <div class="form-group"><label class="form-label">เปอร์เซ็นต์</label>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <input class="form-input" id="f-tpct" placeholder="เช่น 80" style="max-width:100px;text-align:center;" type="number" min="0" max="100">
+        <span style="font-weight:700;color:#888;">%</span>
+      </div>
+    </div>
+    <div class="form-group"><label class="form-label">วันที่</label><input class="form-input" id="f-tdate" placeholder="เช่น 1/4/2026"></div>
+    <div class="form-group"><label class="form-label">หมายเหตุ</label><input class="form-input" id="f-tnote" placeholder="(ไม่จำเป็น)"></div>
+  `, () => {
+    let t = document.getElementById('f-tname').value.trim();
+    let pctRaw = document.getElementById('f-tpct').value.trim();
+    let date = document.getElementById('f-tdate').value.trim();
+    let note = document.getElementById('f-tnote').value.trim();
+    if (!t || !pctRaw || !date) return;
+    let pct = pctRaw.replace('%','').trim() + '%';
+    part.trials.push({ t, pct, date, note });
+    renderTrials();
+    autoSave();
+  });
+}
+
+function deleteTrial(idx) {
+  confirmDelete(`ต้องการลบประวัติครั้งที่ <strong>T${idx}</strong> ออกจากระบบ?`, () => {
+    let c = data.customers.find(c2 => c2.id === currentCustomerId);
+    let m = c.models.find(m2 => m2.id === currentModelId);
+    let part = m.parts.find(p => p.id === currentPartId);
+    part.trials.splice(idx, 1);
+    renderTrials();
+    autoSave();
+  });
+}
+
+// ============ SEARCH ============
+function doSearch(q) {
+  let results = [];
+  q = q.trim().toLowerCase();
+  if (!q) { document.getElementById('search-results').innerHTML = ''; return; }
+  data.customers.forEach(c => {
+    if (c.name.toLowerCase().includes(q)) results.push({ type: 'CUSTOMER', name: c.name, path: '', action: () => openCustomer(c.id) });
+    c.models.forEach(m => {
+      if (m.name.toLowerCase().includes(q)) results.push({ type: 'MODEL', name: m.name, path: c.name, action: () => { currentCustomerId = c.id; openModel(m.id); } });
+      m.parts.forEach(p => {
+        if (p.number.toLowerCase().includes(q) || p.name.toLowerCase().includes(q)) {
+          results.push({ type: 'PART', name: p.number + ' — ' + p.name, path: c.name + ' › ' + m.name, action: () => { currentCustomerId = c.id; currentModelId = m.id; openPart(p.id); } });
+        }
+      });
+    });
+  });
+  let el = document.getElementById('search-results');
+  if (results.length === 0) {
+    el.innerHTML = '<div style="color:#aaa;text-align:center;padding:20px">ไม่พบผลลัพธ์ที่ตรงกัน</div>';
+    return;
+  }
+  el.innerHTML = results.map((r, i) => `
+    <div class="search-result-item" onclick="searchNav(${i})">
+      <span class="sri-type">${r.type}</span>
+      <div>
+        <div class="sri-name">${r.name}</div>
+        ${r.path ? `<div class="sri-path">${r.path}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+  window._searchResults = results;
+}
+function searchNav(i) { window._searchResults[i].action(); }
+
+// ============ INIT ============
+loadSavedData();
+document.getElementById('today-badge').textContent = (() => {
+  let d = new Date();
+  let dd = String(d.getDate()).padStart(2,'0');
+  let mm = String(d.getMonth()+1).padStart(2,'0');
+  let yyyy = d.getFullYear();
+  return dd + '/' + mm + '/' + yyyy;
+})();
+renderCustomerGrid();
+</script>
+</body>
+</html>
