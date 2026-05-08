@@ -979,11 +979,14 @@ function loadSavedData() {
 }
 
 // ============ FIREBASE POLLING (sync จากเครื่องอื่น) ============
+var _fbInitDone = false;
+
 function _fbPoll() {
   fetch(FB_URL)
     .then(function(r) { return r.json(); })
     .then(function(saved) {
-      // อัปเดต badge
+
+      // อัปเดต badge เท่านั้น (ไม่แตะส่วนอื่นของ DOM)
       var badge = document.getElementById('sync-badge');
       if (badge) {
         badge.textContent = '🔴 Real-time LIVE';
@@ -992,28 +995,27 @@ function _fbPoll() {
         badge.style.borderColor = '#a5d6a7';
       }
 
-      if (!saved) return; // Firebase ว่าง ไม่ทำอะไร
+      if (!saved) return;
 
       var incoming = JSON.stringify(saved);
 
-      // ถ้าตรงกับที่เราเพิ่งส่งขึ้น = ข้อมูลของเราเอง ข้ามไป
-      if (incoming === _lastPushedJSON) return;
-
-      // ครั้งแรกที่ดึงข้อมูล (ยังไม่เคย push อะไรขึ้นไป)
-      if (_lastPushedJSON === "") {
+      // ครั้งแรก — จำ hash ไว้ แต่ไม่ render อะไรเพิ่ม (renderCustomerGrid รันแล้วตอน init)
+      if (!_fbInitDone) {
+        _fbInitDone = true;
         _lastPushedJSON = incoming;
-        // ใส่ข้อมูลจาก Firebase เข้าหน่วยความจำ
+        // อัปเดตข้อมูลในหน่วยความจำเงียบๆ ถ้า Firebase มีข้อมูลใหม่กว่า localStorage
         if (saved.data)           data             = saved.data;
         if (saved.partMilestones) partMilestones   = saved.partMilestones;
         if (saved.nextCustomerId) nextCustomerId   = saved.nextCustomerId;
         if (saved.nextModelId)    nextModelId      = saved.nextModelId;
         if (saved.nextPartId)     nextPartId       = saved.nextPartId;
-        // render หน้าหลักครั้งเดียวตอนเริ่ม (ผู้ใช้ยังไม่ได้คลิกอะไร)
-        renderCustomerGrid();
         return;
       }
 
-      // มีเครื่องอื่นแก้ไขข้อมูล → แจ้งให้ผู้ใช้ทราบ และ reload
+      // ข้อมูลไม่เปลี่ยน หรือเป็นของเราเอง — ข้ามไป
+      if (incoming === _lastPushedJSON) return;
+
+      // มีเครื่องอื่นแก้ไขข้อมูล
       _lastPushedJSON = incoming;
       if (saved.data)           data             = saved.data;
       if (saved.partMilestones) partMilestones   = saved.partMilestones;
@@ -1021,7 +1023,7 @@ function _fbPoll() {
       if (saved.nextModelId)    nextModelId      = saved.nextModelId;
       if (saved.nextPartId)     nextPartId       = saved.nextPartId;
 
-      // แสดงปุ่มให้ reload — ไม่แตะ DOM อื่นเลย
+      // แจ้งให้กด reload — ไม่แตะ DOM อื่นเลย
       var t = document.getElementById('save-toast');
       t.innerHTML = '🔄 มีข้อมูลใหม่จากเครื่องอื่น &nbsp;<button onclick="location.reload()" style="background:#fff;color:#1b5e20;border:none;border-radius:6px;padding:3px 10px;font-weight:700;cursor:pointer;">โหลดใหม่</button>';
       t.style.background = '#2e7d32';
@@ -1038,12 +1040,12 @@ function _fbPoll() {
     });
 }
 
-// เริ่ม polling หลัง init เสร็จ
+// เริ่ม polling หลัง init เสร็จ 1 วินาที
 window.addEventListener('load', function() {
   setTimeout(function() {
-    _fbPoll(); // poll ครั้งแรกทันที
-    setInterval(_fbPoll, 5000); // poll ทุก 5 วินาที
-  }, 500);
+    _fbPoll();
+    setInterval(_fbPoll, 5000);
+  }, 1000);
 });
 
 // ============ CONFIRM DELETE ============
